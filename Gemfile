@@ -48,3 +48,5 @@ end
 gem 'omniauth-github'
 
 gem 'rails_12factor', group: :production
+
+gem 'rest-client'

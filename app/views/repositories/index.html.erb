@@ -1,0 +1,30 @@
+<h1>Repositories</h1>
+  <%= button_to "Sign Out", signout_path, method: :delete %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <p>Name</p>
+      </th>
+      <th>
+        <p> Full Name</p>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @repositories.each do |repository| %>
+      <tr>
+        <td>
+          <%= repository[:name] %>
+        </td>
+        <td>
+          <%= repository[:full_name] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

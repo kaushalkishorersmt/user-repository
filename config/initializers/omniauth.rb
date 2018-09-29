@@ -1,4 +1,4 @@
-opts = { scope: 'user:email' }
+opts = { scope: 'user:email,repo' }
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   if Rails.env.production?
@@ -7,3 +7,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     provider :github, Rails.application.secrets.github_client_id, Rails.application.secrets.github_client_secret, opts
   end
 end
+
+# provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo,gist"
