@@ -20,14 +20,14 @@ class RepositoriesController < ApplicationController
       auth_result = JSON.parse(RestClient.get(url, {:params => {:access_token => current_user.oauth_token } }))
 
       @repository = {name: auth_result['name'], description: auth_result['description']}
+
+      commits_url = "https://api.github.com/repos/#{params[:format]}/commits"
+      repo_commits = JSON.parse(RestClient.get(commits_url , {:params => {:access_token => current_user.oauth_token } }))
+      repo_commits.each do |x|
+        @repository_commits << {commit_msg: x['commit']['message'], commit_date: x['commit']['author']['date']}
+      end
     else
       redirect_to root_path, :notice => "Unauthorized."
-    end
-
-    commits_url = "https://api.github.com/repos/#{params[:format]}/commits"
-    repo_commits = JSON.parse(RestClient.get(commits_url , {:params => {:access_token => current_user.oauth_token } }))
-    repo_commits.each do |x|
-      @repository_commits << {commit_msg: x['commit']['message'], commit_date: x['commit']['author']['date']}
     end
 
   end
