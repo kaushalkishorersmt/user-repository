@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
 
     if user.valid?
       session[:user_id] = user.id
-      redirect_to request.env['omniauth.origin']
+      # redirect_to request.env['omniauth.origin']
+      redirect_to repositories_index_path
     end
   end
 

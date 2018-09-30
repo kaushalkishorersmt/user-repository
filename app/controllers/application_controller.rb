@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   def current_user
     session[:user_id].nil? ? nil : User.find(session[:user_id])
   end
+
+  def after_sign_in_path_for(resource)
+    repositories_index_path
+  end
+
 end
