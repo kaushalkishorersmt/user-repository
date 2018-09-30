@@ -7,22 +7,13 @@
       <th>
         <p>Name</p>
       </th>
-      <th>
-        <p> Full Name</p>
-      </th>
-      <th></th>
     </tr>
   </thead>
-
   <tbody>
-
     <% @repositories.each do |repository| %>
       <tr>
         <td>
-          <%= repository[:name] %>
-        </td>
-        <td>
-          <%= repository[:full_name] %>
+          <%= link_to repository[:name], repositories_show_path(repository[:full_name]) %>
         </td>
       </tr>
     <% end %>

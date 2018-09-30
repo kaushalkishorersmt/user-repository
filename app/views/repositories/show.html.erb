@@ -1,0 +1,25 @@
+<h1>Repository Details</h1>
+  <%= button_to "Sign Out", signout_path, method: :delete %>
+
+<table class="table table-striped">
+  <thead border="1">
+    <tr>
+      <th>
+        <p>Name</p>
+      </th>
+      <th>
+        <p>Description</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody border="1">
+    <tr>
+      <td>
+        <%= @repository[:name] %>
+      </td>
+      <td>
+        <%= @repository[:full_name].present? ? @repository[:full_name] : "N/A"%>
+      </td>
+    </tr>
+  </tbody>
+</table>
