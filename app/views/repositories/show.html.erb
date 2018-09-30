@@ -23,3 +23,30 @@
     </tr>
   </tbody>
 </table>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <p>Date</p>
+      </th>
+      <th>
+        <p>Message</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @repository_commits.each do |repository_commit| %>
+      <tr>
+        <td>
+          <%= repository_commit[:commit_date].to_time.strftime('%Y-%m-%d') %>
+        </td>
+        <td>
+          <%= repository_commit[:commit_msg] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
